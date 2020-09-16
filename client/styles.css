@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,700;1,400&display=swap");
+
 * {
    margin: 0;
    padding: 0;
@@ -9,24 +11,57 @@ body {
    width: 100vw;
    height: 100vh;
    color: white;
+   font-family: "Marvel", sans-serif;
 }
 
-.thanos-container {
+h1 {
+   text-transform: uppercase;
+   font-size: 4rem;
+   padding: 20px 0 40px 0;
+}
+
+h2 {
+   font-size: 2rem;
+}
+
+h4 {
+   font-size: 1.3rem;
+}
+
+a {
+   color: white;
+   text-decoration: none;
+}
+
+a:visited {
+   color: white;
+}
+
+header {
    text-align: center;
    padding: 20px;
 }
 
-#snap-button {
+/* #snap-button {
    display: block;
    margin: 10px auto;
    width: 200px;
    height: 50px;
-}
+} */
 
-.character {
+.character-container {
    width: 90%;
    margin: 0 auto;
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;
+}
+
+.character-item {
+   margin-bottom: 20px;
+}
+
+footer {
+   text-align: center;
+   padding: 40px;
 }
