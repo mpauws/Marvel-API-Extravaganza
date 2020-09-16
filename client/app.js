@@ -1,20 +1,42 @@
+// RESOURCES:
 // https://www.youtube.com/watch?v=J3KGuDRr0tE
+// IMAGE VARIANTS: https://developer.marvel.com/documentation/images
 
 const API_KEY = "4d772a2f024b736731088cbd1691d445";
 const charactersInfinityURL = `https://gateway.marvel.com:443/v1/public/events/29/characters?limit=60&apikey=${API_KEY}`;
 
-// IMAGE VARIANTS: https://developer.marvel.com/documentation/images
 const imgRatioPortrait = "portrait_incredible"; // 216 x 324px
 const imgRatioSquare = "standard_fantastic"; // 250 x 250px
 const imgRatioLandscape = "landscape_amazing"; // 250 x 156px
 
-const snapElement = document.getElementById("snap-button");
-const characterContainer = document.querySelector(".character-container");
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+// GET DOM ELEMENTS
 
-// const audioElement = new Audio("sounds/intro.mp3");
-// audioElement.play();
+const seriesNameElement = document.querySelector(".series-header");
+const characterContainer = document.querySelector(".character-container");
+const spinner = document.getElementById("spinner");
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+// SPINNER FUNCTIONALITY
+
+const spinnerVisible = () => {
+   spinner.style.visibility = "visible";
+   setTimeout(() => {
+      spinner.style.visibility = "hidden";
+   }, 5000);
+};
+
+const spinnerHidden = () => {
+   return (spinner.style.visibility = "hidden");
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+// FETCH INFINITY GAUNTLET CHARACTERS
 
 const getCharacterData = () => {
+   /* if (seriesNameElement.textContent === "") {
+      spinnerVisible();
+   } */
    if (localStorage.getCharacterData) {
       return Promise.resolve(JSON.parse(localStorage.characterData));
    }
@@ -23,24 +45,17 @@ const getCharacterData = () => {
       .then((response) => response.json())
       .then((data) => {
          localStorage.charactersInfinityURL = JSON.stringify(data);
+         /* spinnerHidden(); */
          return data;
       });
 };
 
-// To hide groups & Thanos (Avengers, Fantastic Four, X-Men)
-const hiddenCharacters = {
-   1009652: true,
-   1009165: true,
-   1009726: true,
-   1009299: true,
-};
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+// ADD INFINITY GAUNTLET CHARACTERS TO DOM
 
 const addCharactersToPage = (characterData) => {
-   console.log(characterData);
-   // Header
-   const seriesNameElement = document.querySelector(".series-header");
+   //console.log(characterData);
    seriesNameElement.textContent = "Infinity Gauntlet";
-
    characterData.data.results.forEach((character) => {
       const characterImage = `${character.thumbnail.path}/${imgRatioSquare}.${character.thumbnail.extension}`;
       const characterName = character.name.replace(/\(.*\)/, "");
@@ -49,7 +64,23 @@ const addCharactersToPage = (characterData) => {
       const newImg = document.createElement("img");
       const newParagraph = document.createElement("p");
 
-      if (!hiddenCharacters[character.id]) {
+      characterContainer.appendChild(newDiv);
+      newDiv.appendChild(newImg);
+      newDiv.classList.add("character-item");
+      newImg.src = characterImage;
+      characterNameElement.textContent = characterName;
+      newDiv.appendChild(characterNameElement);
+      newParagraph.textContent = "Appeared in x comics";
+      newDiv.appendChild(newParagraph);
+   });
+};
+
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+// LEGACY CODE
+
+//getCharacterData().then(addCharactersToPage);
+
+/* if (!hiddenCharacters[character.id]) {
          characterContainer.appendChild(newDiv);
          newDiv.appendChild(newImg);
          newDiv.classList.add("character-item");
@@ -58,10 +89,4 @@ const addCharactersToPage = (characterData) => {
          newDiv.appendChild(characterNameElement);
          newParagraph.textContent = "Appeared in x comics";
          newDiv.appendChild(newParagraph);
-      }
-   });
-};
-
-getCharacterData().then(addCharactersToPage);
-
-// snapElement.addEventListener("click", () => {});
+      } */

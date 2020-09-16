@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 * {
    margin: 0;
@@ -8,20 +9,23 @@
 
 body {
    background-color: #141414;
-   width: 100vw;
-   height: 100vh;
+   /* width: 100vw; */
+   min-height: 100vh;
    color: white;
    font-family: "Marvel", sans-serif;
+   position: relative;
 }
 
 h1 {
+   font-family: "Bebas Neue", cursive;
    text-transform: uppercase;
-   font-size: 4rem;
-   padding: 20px 0 40px 0;
+   font-size: 7rem;
+   line-height: 6.5rem;
 }
 
 h2 {
    font-size: 2rem;
+   text-align: center;
 }
 
 h4 {
@@ -37,21 +41,57 @@ a:visited {
    color: white;
 }
 
-header {
-   text-align: center;
-   padding: 20px;
-}
-
-/* #snap-button {
+button {
    display: block;
    margin: 10px auto;
    width: 200px;
    height: 50px;
-} */
+   border: none;
+   background-color: brown;
+   color: white;
+   font-family: "Marvel", sans-serif;
+   font-size: 1.3rem;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+button:hover {
+   background-color: #852a2a;
+}
+
+button:focus {
+   outline: none;
+}
+
+.marvel-header {
+   text-align: center;
+}
+
+.marvel-wrapper {
+   display: inline-block;
+   margin: 30px auto;
+   border: white 1px solid;
+   padding: 5px;
+   background-color: brown;
+}
+
+.marvel-wrapper h5 {
+   text-transform: uppercase;
+   letter-spacing: 0.4rem;
+   font-size: 1rem;
+   border-top: white 1px solid;
+   border-bottom: white 1px solid;
+   margin-bottom: 5px;
+}
+
+.series-header {
+   padding: 30px;
+}
 
 .character-container {
    width: 90%;
    margin: 0 auto;
+   padding-bottom: 100px;
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;
@@ -59,9 +99,56 @@ header {
 
 .character-item {
    margin-bottom: 20px;
+   animation: fadeInAnimation ease 0.3s;
+   animation-iteration-count: 1;
+   animation-fill-mode: forwards;
 }
 
 footer {
    text-align: center;
-   padding: 40px;
+   margin: 0 auto;
+   display: inline-block;
+   width: 100%;
+   margin: 30px auto;
+   position: absolute;
+   bottom: 0;
+}
+
+/* CSS SPINNER */
+
+/* #spinner {
+   visibility: hidden;
+   width: 80px;
+   height: 80px;
+
+   border: 2px solid #f3f3f3;
+   border-top: 3px solid #f25a41;
+   border-radius: 100%;
+
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+
+   animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+   from {
+      transform: rotate(0deg);
+   }
+   to {
+      transform: rotate(360deg);
+   }
+} */
+
+@keyframes fadeInAnimation {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
 }
