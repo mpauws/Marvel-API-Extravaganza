@@ -15,8 +15,11 @@
          </div>
       </div>
       <div class="button-bar">
-         <button onclick="getCharacterData().then(addCharactersToPage)">Infinity Gauntlet</button>
+         <button onclick="getCharacters(charactersInfinity).then(addCharactersToPage)">Infinity Gauntlet</button>
+         <button onclick="getCharacters(charactersAgeUltron).then(addCharactersToPage)">Age of Ultron</button>
+         <button onclick="getCharacters(charactersCivilWar).then(addCharactersToPage)">Civil War</button>
       </div>
+
       <main>
          <h2 class="series-header"></h2>
          <div id="spinner"></div>
