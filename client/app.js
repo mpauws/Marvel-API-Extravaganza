@@ -42,66 +42,71 @@ const spinner = document.getElementById("spinner");
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // SPINNER FUNCTIONALITY
 const spinnerVisible = () => {
-   spinner.style.display = "block";
-   setTimeout(() => {
-      spinner.style.display = "none";
-   }, 5000);
+  spinner.style.display = "block";
+  setTimeout(() => {
+    spinner.style.display = "none";
+  }, 5000);
 };
 
 const spinnerHidden = () => {
-   spinner.style.display = "none";
+  spinner.style.display = "none";
 };
 
 // TO DO: localStorage!!!
 
 const handleClick = (series) => {
-   if (series === "infinityGauntlet") {
-      getCharacters(charactersInfinity).then(addCharactersToPage);
-   } else if (series === ageOfUltron) {
-      getCharacters(charactersAgeUltron).then(addCharactersToPage);
-   } else if (series === civilWar) {
-      getCharacters(charactersCivilWar).then(addCharactersToPage);
-   }
+  seriesNameElement.textContent = `Characters of ${series}`;
+  if (series === "Infinity Gauntlet") {
+    getCharacters(charactersInfinity).then(addCharactersToPage);
+  } else if (series === "Age of Ultron") {
+    getCharacters(charactersAgeUltron).then(addCharactersToPage);
+  } else if (series === "Civil War") {
+    getCharacters(charactersCivilWar).then(addCharactersToPage);
+  }
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // FETCH CHARACTERS
 const getCharacters = (seriesURL) => {
-   characterContainer.textContent = "";
-   spinnerVisible();
-   return fetch(seriesURL)
-      .then((response) => response.json())
-      .then((data) => {
-         spinnerHidden();
-         return data;
-      });
+  characterContainer.textContent = "";
+  spinnerVisible();
+  return fetch(seriesURL)
+    .then((response) => response.json())
+    .then((data) => {
+      spinnerHidden();
+      return data;
+    });
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // ADD CHARACTERS TO DOM
 const addCharactersToPage = (characterData) => {
-   // console.log(characterData);
-   // console.log(characterData.data.results);
-   seriesNameElement.textContent = "Characters";
-   characterData.data.results.forEach((character) => {
-      const characterImage = `${character.thumbnail.path}/${imgRatioSquare}.${character.thumbnail.extension}`;
-      const comicBookFrequency = `${character.comics.available}`;
-      const characterName = character.name.replace(/\(.*\)/, "");
-      const newDiv = document.createElement("div");
-      const characterNameElement = document.createElement("h4");
-      const imgContainer = document.createElement("div");
-      const newImg = document.createElement("img");
-      const newParagraph = document.createElement("p");
+  // console.log(characterData);
+  console.log(characterData.data.results);
 
-      characterContainer.appendChild(newDiv);
-      newDiv.appendChild(imgContainer);
-      imgContainer.appendChild(newImg);
-      imgContainer.classList.add("image-container");
-      newDiv.classList.add("character-item");
-      newImg.src = characterImage;
-      characterNameElement.textContent = characterName;
-      newDiv.appendChild(characterNameElement);
-      newParagraph.textContent = `Appeared in ${comicBookFrequency} comics`;
-      newDiv.appendChild(newParagraph);
-   });
+  characterData.data.results.sort(function (a, b) {
+    return b.comics.available - a.comics.available;
+  });
+
+  characterData.data.results.forEach((character) => {
+    const characterImage = `${character.thumbnail.path}/${imgRatioSquare}.${character.thumbnail.extension}`;
+    const comicBookFrequency = `${character.comics.available}`;
+    const characterName = character.name.replace(/\(.*\)/, "");
+    const newDiv = document.createElement("div");
+    const characterNameElement = document.createElement("h4");
+    const imgContainer = document.createElement("div");
+    const newImg = document.createElement("img");
+    const newParagraph = document.createElement("p");
+
+    characterContainer.appendChild(newDiv);
+    newDiv.appendChild(imgContainer);
+    imgContainer.appendChild(newImg);
+    imgContainer.classList.add("image-container");
+    newDiv.classList.add("character-item");
+    newImg.src = characterImage;
+    characterNameElement.textContent = characterName;
+    newDiv.appendChild(characterNameElement);
+    newParagraph.textContent = `Appeared in ${comicBookFrequency} comics`;
+    newDiv.appendChild(newParagraph);
+  });
 };

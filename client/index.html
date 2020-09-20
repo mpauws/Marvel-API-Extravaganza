@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Marvel API Extravaganza</title>
-      <link rel="stylesheet" href="styles.css" />
-      <script defer src="app.js"></script>
-   </head>
-   <body>
-      <div class="marvel-header">
-         <div class="marvel-wrapper">
-            <h1>Marvel</h1>
-            <h5>API Extravaganza</h5>
-         </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marvel API Extravaganza</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="marvel-header">
+      <div class="marvel-wrapper">
+        <h1>Marvel</h1>
+        <h5>API Extravaganza</h5>
       </div>
-      <div class="button-bar">
-         <button onclick="handleClick('infinityGauntlet')">Infinity Gauntlet</button>
-         <button onclick="getCharacters(charactersAgeUltron).then(addCharactersToPage)">Age of Ultron</button>
-         <button onclick="getCharacters(charactersCivilWar).then(addCharactersToPage)">Civil War</button>
-      </div>
+    </div>
+    <div class="button-bar">
+      <button onclick="handleClick('Infinity Gauntlet')">
+        Infinity Gauntlet
+      </button>
+      <button onclick="handleClick('Age of Ultron')">Age of Ultron</button>
+      <button onclick="handleClick('Civil War')">Civil War</button>
+    </div>
 
-      <main>
-         <h2 class="series-header"></h2>
-         <div id="spinner"></div>
-         <div class="character-container"></div>
-      </main>
-      <footer>
-         <a href="http://marvel.com" target="_blank"><h5>Data provided by Marvel. © 2020 MARVEL</h5></a>
-      </footer>
-   </body>
+    <main>
+      <h2 class="series-header"></h2>
+      <div id="spinner"></div>
+      <div class="character-container"></div>
+    </main>
+    <footer>
+      <a href="http://marvel.com" target="_blank"
+        ><h5>Data provided by Marvel. © 2020 MARVEL</h5></a
+      >
+    </footer>
+  </body>
 </html>
