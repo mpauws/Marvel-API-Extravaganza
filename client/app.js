@@ -108,5 +108,10 @@ const addCharactersToPage = (characterData) => {
     newDiv.appendChild(characterNameElement);
     newParagraph.textContent = `Appeared in ${comicBookFrequency} comics`;
     newDiv.appendChild(newParagraph);
+
+    // TO DO: display description of character
+    newDiv.addEventListener("click", () => {
+      console.log(character.description);
+    });
   });
 };
