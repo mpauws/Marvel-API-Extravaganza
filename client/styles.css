@@ -106,6 +106,27 @@ button:focus {
    animation: fadeInAnimation ease 0.3s;
    animation-iteration-count: 1;
    animation-fill-mode: forwards;
+   padding: 10px;
+   cursor: pointer;
+}
+
+.image-container {
+   width: 250px;
+   height: 250px;
+   display: inline-block;
+   overflow: hidden;
+}
+
+.image-container img {
+   transition: 0.2s ease-in;
+}
+
+.image-container img:hover {
+   transform: scale(1.05);
+   -ms-transform: scale(1.05);
+   -moz-transform: scale(1.05);
+   -webkit-transform: scale(1.05);
+   -o-transform: scale(1.05);
 }
 
 footer {

@@ -22,8 +22,8 @@ const imgRatioPortrait = "portrait_incredible"; // 216x324px
 // const imgRatioSquare = "standard_small" //  65x45px
 // const imgRatioSquare = "standard_medium"; //  100x100px
 // const imgRatioSquare = "standard_large"; //  140x140px
-const imgRatioSquare = "standard_xlarge"; //  200x200px
-// const imgRatioSquare = "standard_fantastic"; //  250x250px
+// const imgRatioSquare = "standard_xlarge"; //  200x200px
+const imgRatioSquare = "standard_fantastic"; //  250x250px
 // const imgRatioSquare = "standard_amazing" //  180x180px
 
 // const imgRatioLandscape = "landscape_small"; //   120x90px
@@ -54,6 +54,16 @@ const spinnerHidden = () => {
 
 // TO DO: localStorage!!!
 
+const handleClick = (series) => {
+   if (series === "infinityGauntlet") {
+      getCharacters(charactersInfinity).then(addCharactersToPage);
+   } else if (series === ageOfUltron) {
+      getCharacters(charactersAgeUltron).then(addCharactersToPage);
+   } else if (series === civilWar) {
+      getCharacters(charactersCivilWar).then(addCharactersToPage);
+   }
+};
+
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // FETCH CHARACTERS
 const getCharacters = (seriesURL) => {
@@ -70,7 +80,8 @@ const getCharacters = (seriesURL) => {
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // ADD CHARACTERS TO DOM
 const addCharactersToPage = (characterData) => {
-   console.log(characterData.data.results);
+   // console.log(characterData);
+   // console.log(characterData.data.results);
    seriesNameElement.textContent = "Characters";
    characterData.data.results.forEach((character) => {
       const characterImage = `${character.thumbnail.path}/${imgRatioSquare}.${character.thumbnail.extension}`;
@@ -78,11 +89,14 @@ const addCharactersToPage = (characterData) => {
       const characterName = character.name.replace(/\(.*\)/, "");
       const newDiv = document.createElement("div");
       const characterNameElement = document.createElement("h4");
+      const imgContainer = document.createElement("div");
       const newImg = document.createElement("img");
       const newParagraph = document.createElement("p");
 
       characterContainer.appendChild(newDiv);
-      newDiv.appendChild(newImg);
+      newDiv.appendChild(imgContainer);
+      imgContainer.appendChild(newImg);
+      imgContainer.classList.add("image-container");
       newDiv.classList.add("character-item");
       newImg.src = characterImage;
       characterNameElement.textContent = characterName;
