@@ -5,9 +5,9 @@ const BASE_URL = "https://gateway.marvel.com:";
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // FEATURED CHARACTER URL
-let randomOffset = Math.floor(Math.random() * 1394);
-console.log(randomOffset);
-const featuredChar = `${BASE_URL}443/v1/public/characters?limit=99&offset=${randomOffset}${API_KEY}`;
+let randomOffset = Math.floor(Math.random() * 1488);
+// console.log(randomOffset);
+const featuredChar = `${BASE_URL}443/v1/public/characters?limit=5&offset=${randomOffset}${API_KEY}`;
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // SERIES CHARACTER URLs
@@ -125,30 +125,35 @@ const addCharactersToPage = (characterData) => {
    });
 };
 
-const addFeaturedCharToPage2 = (characterData) => {
-   characterData.data.results.sort(function (a, b) {
+const addFeaturedCharToPage = (characterData) => {
+   const characterDataVar = characterData.data.results;
+   let indexNumber = 0;
+
+   characterDataVar[indexNumber] ? (indexNumber = 0) : indexNumber++;
+
+   characterDataVar.sort(function (a, b) {
       return b.comics.available - a.comics.available;
    });
 
-   console.log(characterData);
+   console.log(characterDataVar[0]);
    // const characterImage = `${character.thumbnail.path}/${imgRatioSquare}.${character.thumbnail.extension}`;
-   console.log("Featured Character Name: ", characterData.data.results[0].name);
-   console.log(
+   // console.log("Featured Character Name: ", characterData.data.results[0].name);
+   /* console.log(
       "Featured Character Img URL: ",
       `${characterData.data.results[0].thumbnail.path}/${imgRatioSquare}.${characterData.data.results[0].thumbnail.extension}`
-   );
-   console.log("Featured Character Description: ", characterData.data.results[0].description);
+   ); */
+   // console.log("Featured Character Description: ", characterData.data.results[0].description);
 
    const newImg = document.createElement("img");
    const featuredCharName = document.createElement("h2");
    const newParagraph = document.createElement("p");
 
-   newImg.src = `${characterData.data.results[0].thumbnail.path}/${imgRatioSquare}.${characterData.data.results[0].thumbnail.extension}`;
+   newImg.src = `${characterDataVar[indexNumber].thumbnail.path}/${imgRatioSquare}.${characterData.data.results[indexNumber].thumbnail.extension}`;
    featuredCharImg.appendChild(newImg);
-   featuredCharName.textContent = characterData.data.results[0].name;
+   featuredCharName.textContent = characterDataVar[indexNumber].name;
    featuredCharNameDiv.appendChild(featuredCharName);
-   newParagraph.textContent = characterData.data.results[0].description;
+   newParagraph.textContent = characterDataVar[indexNumber].description;
    featuredCharDescrDiv.appendChild(newParagraph);
 };
 
-getCharacters(featuredChar).then(addFeaturedCharToPage2);
+getCharacters(featuredChar).then(addFeaturedCharToPage);
