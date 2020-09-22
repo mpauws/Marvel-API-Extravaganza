@@ -1,181 +1,293 @@
+/* ------------------------------------ */
+/* FONTS IMPORT */
+/* ------------------------------------ */
+
 @import url("https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,700;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
+/* ------------------------------------ */
+/* GENERAL STYLING */
+/* ------------------------------------ */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
 
 body {
-  background-color: #141414;
-  /* width: 100vw; */
-  min-height: 100vh;
-  color: white;
-  font-family: "Marvel", sans-serif;
-  position: relative;
+   background-color: #141414;
+   min-height: 100vh;
+   color: white;
+   font-family: "Marvel", sans-serif;
+   position: relative;
 }
 
 h1 {
-  font-family: "Bebas Neue", cursive;
-  text-transform: uppercase;
-  font-size: 7rem;
-  line-height: 6.5rem;
+   font-size: 3rem;
 }
 
 h2 {
-  font-size: 2rem;
-  text-align: center;
+   font-size: 2rem;
 }
 
 h4 {
-  font-size: 1.3rem;
+   font-size: 1.3rem;
+}
+
+h5 {
+   font-size: 1.2rem;
 }
 
 a {
-  color: white;
-  text-decoration: none;
+   color: white;
+   text-decoration: none;
 }
 
 a:visited {
-  color: white;
+   color: white;
 }
 
 button {
-  /* display: block; */
-  margin: 10px auto;
-  width: 200px;
-  height: 50px;
-  border: none;
-  background-color: brown;
-  color: white;
-  font-family: "Marvel", sans-serif;
-  font-size: 1.3rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+   /* display: block; */
+   margin: 10px auto;
+   width: 200px;
+   height: 50px;
+   border: none;
+   background-color: #b6162c;
+   color: white;
+   font-family: "Marvel", sans-serif;
+   font-size: 1.3rem;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #852a2a;
+   background-color: #852a2a;
 }
 
 button:focus {
-  outline: none;
+   outline: none;
 }
 
-.marvel-header {
-  text-align: center;
+/* ------------------------------------ */
+/* HEADER STYLING */
+/* ------------------------------------ */
+
+.header-container {
+   text-align: center;
 }
 
-.marvel-wrapper {
-  display: inline-block;
-  margin: 30px auto;
-  border: white 1px solid;
-  padding: 5px;
-  background-color: brown;
+.header-wrapper {
+   display: inline-block;
+   margin: 30px auto;
+   border: white 1px solid;
+   padding: 5px;
+   background-color: #b6162c;
 }
 
-.marvel-wrapper h5 {
-  text-transform: uppercase;
-  letter-spacing: 0.4rem;
-  font-size: 1rem;
-  border-top: white 1px solid;
-  border-bottom: white 1px solid;
-  margin-bottom: 5px;
+.header-wrapper h1 {
+   font-family: "Bebas Neue", cursive;
+   text-transform: uppercase;
+   font-size: 7rem;
+   line-height: 6.5rem;
+   letter-spacing: -0.13rem;
 }
+
+.header-wrapper h5 {
+   text-transform: uppercase;
+   letter-spacing: 0.4rem;
+   font-size: 1rem;
+   border-top: white 1px solid;
+   border-bottom: white 1px solid;
+   margin-bottom: 5px;
+}
+
+/* ------------------------------------ */
+/* INTRO SECTION STYLING */
+/* ------------------------------------ */
+
+.intro-container {
+   height: 300px;
+   display: flex;
+   align-items: center;
+   background-image: url("https://i.annihil.us/u/prod/marvel/i/mg/6/10/5931db3f3b307/clean.jpg");
+   background-repeat: no-repeat;
+
+   background-position: 70% 82%;
+}
+
+.intro-text {
+   width: 60%;
+   min-width: 500px;
+   max-width: 800px;
+   margin-left: 20px;
+   padding: 30px;
+   background-color: rgb(182, 22, 44, 0.8);
+}
+
+.intro-text-h1 {
+   opacity: 100%;
+}
+
+/* ------------------------------------ */
+/* FAVORITE CHARACHTER SECTION STYLING */
+/* ------------------------------------ */
+
+.favorite-char-intro {
+   width: 70%;
+   margin: 0 auto;
+   text-align: center;
+   padding: 30px;
+   min-width: 500px;
+   max-width: 800px;
+}
+
+.favorite-char-container {
+   padding: 40px;
+}
+
+h1.favorite-char-title {
+   text-align: center;
+   padding: 20px;
+}
+
+.favorite-char-wrapper {
+   display: flex;
+   justify-content: center;
+}
+
+.favorite-char-image img {
+   margin-right: 10px;
+}
+
+.favorite-char-text {
+   width: 300px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding-left: 10px;
+}
+
+.favority-char-name h2 {
+   font-size: 2em;
+}
+
+.favorite-char-freq {
+  color: grey
+}
+
+/* ------------------------------------ */
+/* BUTTON BAR SERIES CHARACTERS STYLING */
+/* ------------------------------------ */
 
 .button-bar {
-  display: flex;
+   display: flex;
+   flex-wrap: wrap;
+   max-width: 900px;
+   margin: 0 auto;
 }
 
 .series-header {
-  padding: 30px;
+   padding: 30px;
 }
 
+/* ------------------------------------ */
+/* SERIES CHARACTER STYLING */
+/* ------------------------------------ */
+
 .character-container {
-  width: 90%;
-  margin: 0 auto;
-  padding-bottom: 100px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+   width: 90%;
+   margin: 0 auto;
+   padding-bottom: 100px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   position: relative;
+}
+
+h2.series-header {
+   text-align: center;
 }
 
 .character-item {
-  margin-bottom: 20px;
-  animation: fadeInAnimation ease 0.3s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  padding: 10px;
-  cursor: pointer;
+   margin-bottom: 20px;
+   animation: fadeInAnimation ease 0.3s;
+   animation-iteration-count: 1;
+   animation-fill-mode: forwards;
+   padding: 10px;
 }
 
 .image-container {
-  width: 250px;
-  height: 250px;
-  display: inline-block;
-  overflow: hidden;
+   width: 250px;
+   height: 250px;
+   display: inline-block;
+   overflow: hidden;
 }
 
 .image-container img {
-  transition: 0.2s ease-in;
+   transition: 0.2s ease-in;
 }
 
 .image-container img:hover {
-  transform: scale(1.05);
-  -ms-transform: scale(1.05);
-  -moz-transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  -o-transform: scale(1.05);
+   transform: scale(1.05);
+   -ms-transform: scale(1.05);
+   -moz-transform: scale(1.05);
+   -webkit-transform: scale(1.05);
+   -o-transform: scale(1.05);
 }
 
-footer {
-  text-align: center;
-  margin: 0 auto;
-  display: inline-block;
-  width: 100%;
-  margin: 30px auto;
-  position: absolute;
-  bottom: 0;
-}
-
+/* ------------------------------------ */
 /* CSS SPINNER */
+/* ------------------------------------ */
 
 #spinner {
-  display: none;
-  position: absolute;
-  top: 50vh;
-  width: 50px;
-  height: 50px;
+   display: none;
+   width: 50px;
+   height: 50px;
 
-  border: 2px solid #f3f3f3;
-  border-top: 3px solid #f25a41;
-  border-radius: 100%;
+   border: 2px solid #f3f3f3;
+   border-top: 3px solid #b6162c;
+   border-radius: 100%;
 
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+   /*    position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0; */
+   margin: auto;
 
-  animation: spin 1s infinite linear;
+   animation: spin 1s infinite linear;
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+   from {
+      transform: rotate(0deg);
+   }
+   to {
+      transform: rotate(360deg);
+   }
 }
 
 @keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+/* ------------------------------------ */
+/* FOOTER STYLING */
+/* ------------------------------------ */
+
+footer {
+   text-align: center;
+   margin: 0 auto;
+   display: inline-block;
+   width: 100%;
+   margin: 30px auto;
+   position: absolute;
+   bottom: 0;
 }

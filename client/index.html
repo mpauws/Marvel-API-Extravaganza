@@ -1,42 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marvel API Extravaganza</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script defer src="app.js"></script>
-  </head>
-  <body>
-    <div class="marvel-header">
-      <div class="marvel-wrapper">
-        <h1>Marvel</h1>
-        <h5>API Extravaganza</h5>
-      </div>
-    </div>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Marvel API Extravaganza</title>
+      <link rel="stylesheet" href="styles.css" />
+      <script defer src="image-sizes.js"></script>
+      <script defer src="favorite-char-ids.js"></script>
+      <script defer src="app.js"></script>
+   </head>
+   <body>
+      <header class="header-container">
+         <div class="header-wrapper">
+            <h1>Marvel</h1>
+            <h5>API Extravaganza</h5>
+         </div>
+      </header>
 
-    <main>
-      <h2>Featured Character</h2>
-      <div>
-        <div class="featured-char-name"></div>
-        <div><div class="featured-char-image"></div>
-        <div class="featured-char-description"></div>
-      </div>
-      <div class="button-bar">
-        <button onclick="handleClick('Infinity Gauntlet')">
-          Infinity Gauntlet
-        </button>
-        <button onclick="handleClick('Age of Ultron')">Age of Ultron</button>
-        <button onclick="handleClick('Civil War')">Civil War</button>
-      </div>
-      <h2 class="series-header"></h2>
-      <div id="spinner"></div>
-      <div class="character-container"></div>
-    </main>
-    <footer>
-      <a href="http://marvel.com" target="_blank"
-        ><h5>Data provided by Marvel. © 2020 MARVEL</h5></a
-      >
-    </footer>
-  </body>
+      <main>
+         <!-- INTRO SECTION -->
+         <div class="intro-container">
+            <div class="intro-text">
+               <h1 class="intro-text-h1">Because... Why Not?!</h1>
+               <h5>
+                  A web developer needs to build personal projects just like an influencer needs to take selfies. So get
+                  ready for the developer's version of a duckface! In order to try out javascript syntax in combination
+                  with a large database I've decided to use the
+                  <a href="https://developer.marvel.com/" target="_blank">Marvel Comics API</a> .
+               </h5>
+            </div>
+         </div>
+
+         <!-- FAVORITE CHARACTER -->
+         <div class="favorite-char-container">
+            <h1 class="favorite-char-title">Random Favourite Character</h1>
+            <div class="favorite-char-wrapper">
+               <div class="favorite-char-image"></div>
+               <div class="favorite-char-text">
+                  <div class="favorite-char-name"></div>
+                  <div class="favorite-char-description"></div>
+               </div>
+            </div>
+         </div>
+
+         <!-- SERIES CHARACTER BUTTONS -->
+         <div>
+            <div class="favorite-char-intro">
+               <h1 class="favorite-char-title">Series Characters</h1>
+               <h5>
+                  Marvel movies are based on comic books, but they often differ in many ways. One of those differences
+                  is the characters that feature in the movies and comic books respectively. Click the buttons below to
+                  view the characters featuring in the comic books for each of the epic movies.
+               </h5>
+            </div>
+            <div class="button-bar">
+               <button onclick="handleClick('Infinity Gauntlet')">Infinity Gauntlet</button>
+               <button onclick="handleClick('Age of Ultron')">Age of Ultron</button>
+               <button onclick="handleClick('Civil War')">Civil War</button>
+            </div>
+            <h2 class="series-header"></h2>
+            <div id="spinner"></div>
+            <div class="character-container"></div>
+         </div>
+      </main>
+      <footer>
+         <a href="http://marvel.com" target="_blank"><h5>Data provided by Marvel. © 2020 MARVEL</h5></a>
+      </footer>
+   </body>
 </html>
