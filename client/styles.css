@@ -162,7 +162,7 @@ h1.favorite-char-title {
 }
 
 .favorite-char-text {
-   width: 300px;
+   width: 500px;
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -174,7 +174,19 @@ h1.favorite-char-title {
 }
 
 .favorite-char-freq {
-  color: grey
+   color: grey;
+}
+
+/* ------------------------------------ */
+/* FAV CHARACTER COMIC BOOK APPEARANCES */
+/* ------------------------------------ */
+
+.favorite-char-comic-appearances {
+   display: none;
+   width: 400px;
+   margin: 0 auto;
+   text-align: center;
+   padding: 30px;
 }
 
 /* ------------------------------------ */

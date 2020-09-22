@@ -50,6 +50,12 @@ const handleClick = (series) => {
    }
 };
 
+const handleClickComicApp = () => {
+   const comicBookApp = document.querySelector(".favorite-char-comic-appearances");
+   console.log("Ik werk");
+   comicBookApp.style.display = "block";
+};
+
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // FETCH CHARACTERS
 const getCharacters = (seriesURL) => {
@@ -68,8 +74,6 @@ const getCharacters = (seriesURL) => {
 const addFavoriteCharToPage = (characterData) => {
    const characterDataVar = characterData.data.results;
 
-   console.log(characterDataVar);
-
    characterDataVar.sort(function (a, b) {
       return b.comics.available - a.comics.available;
    });
@@ -79,7 +83,6 @@ const addFavoriteCharToPage = (characterData) => {
    const newParagraph = document.createElement("p");
    const newFreqParagraph = document.createElement("p");
    const comicBookFrequency = `${characterDataVar[0].comics.available}`;
-   console.log(comicBookFrequency);
 
    newImg.src = `${characterDataVar[0].thumbnail.path}/${imgRatioSquare250}.${characterDataVar[0].thumbnail.extension}`;
    favoriteCharImg.appendChild(newImg);
@@ -89,9 +92,18 @@ const addFavoriteCharToPage = (characterData) => {
    favoriteCharDescrDiv.appendChild(newParagraph);
    newFreqParagraph.textContent = `(Appeared in ${comicBookFrequency} comics)`;
    newFreqParagraph.classList = "favorite-char-freq";
-
    // Only displays the appearance frequency when larger than 10
    comicBookFrequency > 10 && favoriteCharNameDiv.appendChild(newFreqParagraph);
+
+   // CONSOLE.LOG FIRST COMIC BOOK (LATER FIRST 5) OF CHARACTER
+   // console.log(`${characterDataVar[0].comics.items[0].resourceURI}?${API_KEY}`);
+   console.log(characterDataVar[0])
+   // FOR LOOP:
+   //    * CREATE COMIC BOOK ITEM DIV
+   //    * CREATE NEW IMAGE
+   //    * SET SRC PROPERTY OF NEW IMAGE
+   //    * APPEND IMAGE TO COMIC BOOK ITEM DIV
+   //    * SLIDE OPEN WHEN BUTTON IS CLICKED (CSS)?
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
