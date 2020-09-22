@@ -1,11 +1,14 @@
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // RESOURCES: https://www.youtube.com/watch?v=J3KGuDRr0tE
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
 const API_KEY = "apikey=4d772a2f024b736731088cbd1691d445";
 const BASE_URL = "https://gateway.marvel.com:";
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // FAVORITE CHARACTER URL
-// const favoriteChar = `${BASE_URL}443/v1/public/characters?limit=5&offset=${randomOffset}&${API_KEY}`;
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
 const randomArrayIndex = Math.floor(
   Math.random() * favoriteCharacterIDs.length - 1
 );
@@ -13,12 +16,16 @@ const favoriteChar = `${BASE_URL}443/v1/public/characters/${favoriteCharacterIDs
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // SERIES CHARACTER URLs
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
 const charactersInfinity = `${BASE_URL}443/v1/public/events/29/characters?orderBy=name&limit=60&${API_KEY}`;
 const charactersAgeUltron = `${BASE_URL}443/v1/public/events/314/characters?orderBy=name&${API_KEY}`;
 const charactersCivilWar = `${BASE_URL}443/v1/public/events/238/characters?orderBy=name&limit=99&${API_KEY}`;
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // GET DOM ELEMENTS
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
 const seriesNameElement = document.querySelector(".series-header");
 const characterContainer = document.querySelector(".character-container");
 const spinner = document.getElementById("spinner");
@@ -28,9 +35,14 @@ const favoriteCharDescrDiv = document.querySelector(
   ".favorite-char-description"
 );
 const comicBookApp = document.querySelector(".favorite-char-comic-appearances");
+const comicBookContainer = document.querySelector(
+  ".favorite-char-comic-container"
+);
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // SPINNER FUNCTIONALITY
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
 const spinnerVisible = () => {
   spinner.style.display = "block";
   setTimeout(() => {
@@ -57,8 +69,9 @@ const handleClick = (series) => {
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // FETCH CHARACTERS
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
 const getCharacters = (seriesURL) => {
-  characterContainer.textContent = "";
   spinnerVisible();
   return fetch(seriesURL)
     .then((response) => response.json())
@@ -70,18 +83,38 @@ const getCharacters = (seriesURL) => {
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // ADD COMICS OF FAV CHARACTER TO HIDDEN DIV
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
 const addComicsToHiddenDiv = (characterData) => {
-  console.log(characterData);
-  const newDiv = document.createElement("div");
-  comicBookApp.appendChild(newDiv);
-  const newImg = document.createElement("img");
-  newDiv.appendChild(newImg);
-  newImg.src = `${characterData.data.results[0].thumbnail.path}/${imgRatioPortrait324h}.jpg`;
-  console.log(characterData.data.results[0].thumbnail.path);
+  comicBookContainer.textContent = "";
+  // console.log(characterData);
+
+  if (characterData.data.results.length === 0) {
+    console.log("oeps");
+    // ENTER: HULK SMASH!!!
+  } else {
+    characterData.data.results.forEach((comic) => {
+      const newDiv = document.createElement("div");
+      const newImg = document.createElement("img");
+      const newComicTitle = document.createElement("h6");
+
+      newDiv.classList = "favorite-char-comic-item";
+      comicBookContainer.appendChild(newDiv);
+      newDiv.appendChild(newImg);
+
+      console.log(characterData.data.results.length);
+      newImg.src = `${comic.thumbnail.path}/${imgRatioPortrait324h}.jpg`;
+      newComicTitle.textContent = `${comic.title}`;
+      newDiv.appendChild(newComicTitle);
+    });
+  }
+  comicBookApp.style.display = "block";
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // ADD RANDOM FAVOURITE CHARACTER TO DOM
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
 const addFavoriteCharToPage = (characterData) => {
   const characterDataVar = characterData.data.results;
   const comicBooksChar = `${BASE_URL}443/v1/public/characters/${characterDataVar[0].id}/comics?limit=3&${API_KEY}`;
@@ -93,7 +126,7 @@ const addFavoriteCharToPage = (characterData) => {
 
   const newImg = document.createElement("img");
   const favoriteCharName = document.createElement("h2");
-  const newParagraph = document.createElement("p");
+  const newDescrParagraph = document.createElement("p");
   const newFreqParagraph = document.createElement("p");
   const comicBookFrequency = `${characterDataVar[0].comics.available}`;
   const newComicCharButton = document.createElement("button");
@@ -102,25 +135,28 @@ const addFavoriteCharToPage = (characterData) => {
   favoriteCharImg.appendChild(newImg);
   favoriteCharName.textContent = characterDataVar[0].name.replace(/\(.*\)/, "");
   favoriteCharNameDiv.appendChild(favoriteCharName);
-  newParagraph.textContent = characterDataVar[0].description;
-  favoriteCharDescrDiv.appendChild(newParagraph);
+  newDescrParagraph.textContent = characterDataVar[0].description;
+  favoriteCharDescrDiv.appendChild(newDescrParagraph);
   newFreqParagraph.textContent = `(Appeared in ${comicBookFrequency} comics)`;
   newFreqParagraph.classList = "favorite-char-freq";
+
   // Only displays the appearance frequency when larger than 10
-  comicBookFrequency > 10 && favoriteCharNameDiv.appendChild(newFreqParagraph);
+  comicBookFrequency >= 3 && favoriteCharNameDiv.appendChild(newFreqParagraph);
 
   newComicCharButton.textContent = "Show Recent Comics";
   favoriteCharDescrDiv.appendChild(newComicCharButton);
 
   newComicCharButton.addEventListener("click", function () {
     getCharacters(comicBooksChar).then(addComicsToHiddenDiv);
-    comicBookApp.style.display = "block";
   });
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // ADD SERIES CHARACTERS TO DOM
+// [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
 const addCharactersToPage = (characterData) => {
+  characterContainer.textContent = "";
   characterContainer.style.minHeight = "100vh"; // Prevents auto scroll
   characterData.data.results.sort(function (a, b) {
     return b.comics.available - a.comics.available;
