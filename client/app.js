@@ -73,6 +73,9 @@ const getCharacters = (seriesURL) => {
 // ADD RANDOM FAVOURITE CHARACTER TO DOM
 const addFavoriteCharToPage = (characterData) => {
    const characterDataVar = characterData.data.results;
+   console.log();
+   const comicBooksChar = `${BASE_URL}443/v1/public/characters/${characterDataVar[0]}/comics?limit=5&${API_KEY}`;
+   console.log(comicBooksChar);
 
    characterDataVar.sort(function (a, b) {
       return b.comics.available - a.comics.available;
@@ -83,6 +86,7 @@ const addFavoriteCharToPage = (characterData) => {
    const newParagraph = document.createElement("p");
    const newFreqParagraph = document.createElement("p");
    const comicBookFrequency = `${characterDataVar[0].comics.available}`;
+   const newDiv = document.createElement("div");
 
    newImg.src = `${characterDataVar[0].thumbnail.path}/${imgRatioSquare250}.${characterDataVar[0].thumbnail.extension}`;
    favoriteCharImg.appendChild(newImg);
@@ -97,7 +101,8 @@ const addFavoriteCharToPage = (characterData) => {
 
    // CONSOLE.LOG FIRST COMIC BOOK (LATER FIRST 5) OF CHARACTER
    // console.log(`${characterDataVar[0].comics.items[0].resourceURI}?${API_KEY}`);
-   console.log(characterDataVar[0])
+   console.log(characterDataVar[0]);
+
    // FOR LOOP:
    //    * CREATE COMIC BOOK ITEM DIV
    //    * CREATE NEW IMAGE

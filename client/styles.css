@@ -210,6 +210,7 @@ h1.favorite-char-title {
 
 .character-container {
    width: 90%;
+   max-width: 1300px;
    margin: 0 auto;
    padding-bottom: 100px;
    display: flex;
