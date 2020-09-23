@@ -10,9 +10,9 @@
 /* ------------------------------------ */
 
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -23,49 +23,49 @@ body {
 }
 
 h1 {
-   font-size: 3rem;
+  font-size: 3rem;
 }
 
 h2 {
-   font-size: 2rem;
+  font-size: 2rem;
 }
 
 h4 {
-   font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
 h5 {
-   font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 h6 {
-   font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 a,
 a:visited {
-   color: white;
+  color: white;
 }
 
 button {
-   margin: 10px auto;
-   width: 200px;
-   height: 50px;
-   border: none;
-   background-color: #b6162c;
-   color: white;
-   font-family: "Marvel", sans-serif;
-   font-size: 1.3rem;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
+  margin: 10px auto;
+  width: 200px;
+  height: 50px;
+  border: none;
+  background-color: #b6162c;
+  color: white;
+  font-family: "Marvel", sans-serif;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-   background-color: #852a2a;
+  background-color: #852a2a;
 }
 
 button:focus {
-   outline: none;
+  outline: none;
 }
 
 /* ------------------------------------ */
@@ -198,6 +198,14 @@ button:focus {
    -o-transform: scale(1.05);
 }
 
+.favorite-char-comic-error {
+  width: 200px;
+  padding: 20px;
+}
+
+img.favorite-char-comic-error {
+  padding: 0 0 20px 0;
+}
 /* ------------------------------------ */
 /* SECTION 3: SERIES CHARACTERS */
 /* ------------------------------------ */
@@ -295,21 +303,21 @@ h1.section-3-char-header {
 }
 
 @keyframes spin {
-   from {
-      transform: rotate(0deg);
-   }
-   to {
-      transform: rotate(360deg);
-   }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes fadeInAnimation {
-   0% {
-      opacity: 0;
-   }
-   100% {
-      opacity: 1;
-   }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* ------------------------------------ */

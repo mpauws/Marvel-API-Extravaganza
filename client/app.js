@@ -38,28 +38,28 @@ const characterContainer = document.querySelector(".section-3-char-wrapper");
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 const spinnerVisible = () => {
-   spinner.style.display = "block";
-   setTimeout(() => {
-      spinner.style.display = "none";
-   }, 5000);
+  spinner.style.display = "block";
+  setTimeout(() => {
+    spinner.style.display = "none";
+  }, 5000);
 };
 
 const spinnerHidden = () => {
-   spinner.style.display = "none";
+  spinner.style.display = "none";
 };
 
 // TO DO: localStorage!!!
 // TO DO: Use event.target to fire off getCharacters
 
 const handleClick = (series) => {
-   seriesNameElement.textContent = `Characters of ${series}`;
-   if (series === "Infinity Gauntlet") {
-      getCharacters(charactersInfinity).then(addCharactersToPage);
-   } else if (series === "Age of Ultron") {
-      getCharacters(charactersAgeUltron).then(addCharactersToPage);
-   } else if (series === "Civil War") {
-      getCharacters(charactersCivilWar).then(addCharactersToPage);
-   }
+  seriesNameElement.textContent = `Characters of ${series}`;
+  if (series === "Infinity Gauntlet") {
+    getCharacters(charactersInfinity).then(addCharactersToPage);
+  } else if (series === "Age of Ultron") {
+    getCharacters(charactersAgeUltron).then(addCharactersToPage);
+  } else if (series === "Civil War") {
+    getCharacters(charactersCivilWar).then(addCharactersToPage);
+  }
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -67,13 +67,13 @@ const handleClick = (series) => {
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 const getCharacters = (seriesURL) => {
-   spinnerVisible();
-   return fetch(seriesURL)
-      .then((response) => response.json())
-      .then((data) => {
-         spinnerHidden();
-         return data;
-      });
+  spinnerVisible();
+  return fetch(seriesURL)
+    .then((response) => response.json())
+    .then((data) => {
+      spinnerHidden();
+      return data;
+    });
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
