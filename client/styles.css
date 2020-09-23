@@ -17,7 +17,6 @@
 
 body {
    background-color: #0e0e0e;
-   min-height: 100vh;
    color: white;
    font-family: "Marvel", sans-serif;
    position: relative;
@@ -43,11 +42,7 @@ h6 {
    font-size: 1.4rem;
 }
 
-a {
-   color: white;
-   text-decoration: none;
-}
-
+a,
 a:visited {
    color: white;
 }
@@ -74,22 +69,22 @@ button:focus {
 }
 
 /* ------------------------------------ */
-/* HEADER STYLING */
+/* TOP BANNER */
 /* ------------------------------------ */
 
-.header-container {
+.top-banner-container {
    text-align: center;
 }
 
-.header-wrapper {
+.top-banner-wrapper {
    display: inline-block;
    margin: 30px auto;
-   border: white 1px solid;
-   padding: 5px;
+   padding: 5px 8px 5px 5px;
    background-color: #b6162c;
+   border: white 1px solid;
 }
 
-.header-wrapper h1 {
+.top-banner-wrapper h1 {
    font-family: "Bebas Neue", cursive;
    text-transform: uppercase;
    font-size: 7rem;
@@ -97,7 +92,7 @@ button:focus {
    letter-spacing: -0.13rem;
 }
 
-.header-wrapper h5 {
+.top-banner-wrapper h5 {
    text-transform: uppercase;
    letter-spacing: 0.4rem;
    font-size: 1rem;
@@ -107,37 +102,107 @@ button:focus {
 }
 
 /* ------------------------------------ */
-/* INTRO SECTION STYLING */
+/* SECTION 1: INTRO */
 /* ------------------------------------ */
 
-.intro-container {
-   height: 400px;
+.section-1-container {
    display: flex;
    align-items: center;
+   height: 400px;
+   padding: 20px;
    background-image: url("https://i.annihil.us/u/prod/marvel/i/mg/6/10/5931db3f3b307/clean.jpg");
    background-repeat: no-repeat;
    background-size: 100vw;
    background-position: 70% 82%;
 }
 
-.intro-text {
+.section-1-text-wrapper {
    width: 60%;
-   min-width: 500px;
+   min-width: 400px;
    max-width: 800px;
-   margin-left: 20px;
+   max-height: 380px;
    padding: 30px;
    background-color: rgb(182, 22, 44, 0.8);
 }
 
-.intro-text-h1 {
-   opacity: 100%;
+/* ------------------------------------ */
+/* SECTION 2: RANDOM FAVORITE CHARACTER */
+/* ------------------------------------ */
+
+.section-2-container {
+   background-image: url("./images/background-1.jpg");
+   background-position: 0% 10%;
+   background-size: 100vw;
+   padding: 80px;
+}
+
+.section-2-title {
+   text-align: center;
+   padding: 20px;
+   padding-top: 0;
+}
+
+.section-2-wrapper {
+   display: flex;
+   justify-content: center;
+}
+
+.section-2-image img {
+   margin-right: 10px;
+}
+
+.section-2-text-wrapper {
+   width: 500px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding-left: 15px;
+}
+
+.section-2-char-freq {
+   color: grey;
+}
+
+.section-2-comic-container {
+   display: none;
+   width: 900px;
+   margin: 0 auto;
+   text-align: center;
+   padding: 30px;
+}
+
+.section-2-comic-wrapper {
+   display: flex;
+   justify-content: center;
+   padding: 20px;
+}
+
+.section-2-comic-item {
+   margin: 30px;
+   width: 216px;
+}
+
+.section-2-comic-item h6 {
+   padding-top: 10px;
+}
+
+.section-2-comic-item img {
+   transition: 0.2s ease-in;
+}
+
+.section-2-comic-item img:hover {
+   transform: scale(1.05);
+   -ms-transform: scale(1.05);
+   -moz-transform: scale(1.05);
+   -webkit-transform: scale(1.05);
+   -o-transform: scale(1.05);
 }
 
 /* ------------------------------------ */
-/* FAVORITE CHARACHTER SECTION STYLING */
+/* SECTION 3: SERIES CHARACTERS */
 /* ------------------------------------ */
 
-.favorite-char-header {
+.section-3-header {
    background-image: url("http://i.annihil.us/u/prod/marvel/i/mg/b/d0/5ddc1316a1e5e/clean.jpg");
    background-repeat: no-repeat;
    background-position: 50% 60%;
@@ -151,7 +216,7 @@ button:focus {
    justify-content: center;
 }
 
-.favorite-char-intro {
+.section-3-wrapper {
    width: 60%;
    min-width: 500px;
    max-width: 800px;
@@ -160,114 +225,25 @@ button:focus {
    background-color: rgb(182, 22, 44, 0.9);
 }
 
-/* ------------------------------------ */
-/* BUTTON BAR SERIES CHARACTERS STYLING */
-/* ------------------------------------ */
-
-.button-bar {
+.section-3-button-bar {
    display: flex;
    flex-wrap: wrap;
    max-width: 900px;
    margin: 0 auto;
 }
 
-.button-bar button {
+.section-3-button-bar button {
    margin: 10px;
    background-color: rgb(182, 22, 44, 0.9);
 }
 
-.series-header {
-   padding: 30px;
-}
-
-.favorite-char-container {
-   background-image: url("./images/background-1.jpg");
-   background-position: 0% 10%;
-   background-size: 100vw;
-   padding: 80px;
-}
-
-h1.favorite-char-title {
-   text-align: center;
-   padding: 20px;
-   padding-top: 0;
-}
-
-.favorite-char-wrapper {
-   display: flex;
-   justify-content: center;
-}
-
-.favorite-char-image img {
-   margin-right: 10px;
-}
-
-.favorite-char-text {
-   width: 500px;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   padding-left: 15px;
-}
-
-.favority-char-name h2 {
-   font-size: 2em;
-}
-
-.favorite-char-freq {
-   color: grey;
-}
-
-/* ------------------------------------ */
-/* FAV CHARACTER COMIC BOOK APPEARANCES */
-/* ------------------------------------ */
-
-.favorite-char-comic-appearances {
-   display: none;
-   width: 900px;
-   margin: 0 auto;
-   text-align: center;
-   padding: 30px;
-}
-
-.favorite-char-comic-container {
-   display: flex;
-   justify-content: center;
-   padding: 20px;
-}
-
-.favorite-char-comic-item {
-   margin: 30px;
-   width: 216px;
-}
-
-.favorite-char-comic-item h6 {
-   padding-top: 10px;
-}
-
-.favorite-char-comic-item img {
-   transition: 0.2s ease-in;
-}
-
-.favorite-char-comic-item img:hover {
-   transform: scale(1.05);
-   -ms-transform: scale(1.05);
-   -moz-transform: scale(1.05);
-   -webkit-transform: scale(1.05);
-   -o-transform: scale(1.05);
-}
-
-/* ------------------------------------ */
-/* SERIES CHARACTER STYLING */
-/* ------------------------------------ */
-
-.series-container {
+.section-3-char-container {
    background-image: url("./images/background-2.jpg");
    background-repeat: no-repeat;
    background-size: 100vw;
 }
 
-.character-container {
+.section-3-char-wrapper {
    width: 90%;
    max-width: 1300px;
    margin: 0 auto;
@@ -278,12 +254,12 @@ h1.favorite-char-title {
    position: relative;
 }
 
-h1.series-header {
+h1.section-3-char-header {
    padding: 60px 0;
    text-align: center;
 }
 
-.character-item {
+.section-3-char-item {
    margin-bottom: 20px;
    animation: fadeInAnimation ease 0.3s;
    animation-iteration-count: 1;
@@ -291,18 +267,11 @@ h1.series-header {
    padding: 10px;
 }
 
-.image-container {
-   width: 250px;
-   height: 250px;
-   display: inline-block;
-   overflow: hidden;
-}
-
-.image-container img {
+.section-3-char-item img {
    transition: 0.2s ease-in;
 }
 
-.image-container img:hover {
+.section-3-char-item img:hover {
    transform: scale(1.05);
    -ms-transform: scale(1.05);
    -moz-transform: scale(1.05);
@@ -318,13 +287,10 @@ h1.series-header {
    display: none;
    width: 50px;
    height: 50px;
-
    border: 2px solid #f3f3f3;
    border-top: 3px solid #b6162c;
    border-radius: 100%;
-
-   margin: auto;
-
+   margin: 0 auto;
    animation: spin 1s infinite linear;
 }
 
@@ -352,8 +318,6 @@ h1.series-header {
 
 footer {
    text-align: center;
-   margin: 0 auto;
-   display: inline-block;
    width: 100%;
    margin: 30px auto;
    position: absolute;
@@ -361,10 +325,7 @@ footer {
 }
 
 @media only screen and (max-width: 915px) {
-   .character-container {
+   .section-3-char-wrapper {
       justify-content: center;
    }
-}
-.test-test-test {
-   width: 300px;
 }

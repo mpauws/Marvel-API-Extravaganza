@@ -24,14 +24,14 @@ const charactersCivilWar = `${BASE_URL}events/238/characters?orderBy=name&limit=
 // GET DOM ELEMENTS
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
-const seriesNameElement = document.querySelector(".series-header");
-const characterContainer = document.querySelector(".character-container");
 const spinner = document.getElementById("spinner");
-const favoriteCharImg = document.querySelector(".favorite-char-image");
-const favoriteCharNameDiv = document.querySelector(".favorite-char-name");
-const favoriteCharDescrDiv = document.querySelector(".favorite-char-description");
-const comicBookApp = document.querySelector(".favorite-char-comic-appearances");
-const comicBookContainer = document.querySelector(".favorite-char-comic-container");
+const favoriteCharImg = document.querySelector(".section-2-image");
+const favoriteCharNameDiv = document.querySelector(".section-2-char-name");
+const favoriteCharDescrDiv = document.querySelector(".section-2-char-description");
+const comicBookApp = document.querySelector(".section-2-comic-container");
+const comicBookContainer = document.querySelector(".section-2-comic-wrapper");
+const seriesNameElement = document.querySelector(".section-3-char-header");
+const characterContainer = document.querySelector(".section-3-char-wrapper");
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // SPINNER FUNCTIONALITY
@@ -49,6 +49,7 @@ const spinnerHidden = () => {
 };
 
 // TO DO: localStorage!!!
+// TO DO: Use event.target to fire off getCharacters
 
 const handleClick = (series) => {
    seriesNameElement.textContent = `Characters of ${series}`;
@@ -101,7 +102,7 @@ const addFavoriteCharToPage = (characterData) => {
    newDescrParagraph.textContent = characterDataVar[0].description;
    favoriteCharDescrDiv.appendChild(newDescrParagraph);
    newFreqParagraph.textContent = `(Appeared in ${comicBookFrequency} comics)`;
-   newFreqParagraph.classList = "favorite-char-freq";
+   newFreqParagraph.classList = "section-2-char-freq";
 
    comicBookFrequency >= 3 && favoriteCharNameDiv.appendChild(newFreqParagraph);
 
@@ -129,7 +130,7 @@ const addComicsToHiddenDiv = (characterData) => {
          const newImg = document.createElement("img");
          const newComicTitle = document.createElement("h6");
 
-         newDiv.classList = "favorite-char-comic-item";
+         newDiv.classList = "section-2-comic-item";
          comicBookContainer.appendChild(newDiv);
          newDiv.appendChild(newImg);
 
@@ -162,10 +163,8 @@ const addCharactersToPage = (characterData) => {
       const newParagraph = document.createElement("p");
 
       characterContainer.appendChild(newDiv);
-      newDiv.appendChild(imgContainer);
-      imgContainer.appendChild(newImg);
-      imgContainer.classList.add("image-container");
-      newDiv.classList.add("character-item");
+      newDiv.appendChild(newImg);
+      newDiv.classList.add("section-3-char-item");
       newImg.src = characterImage;
       characterNameElement.textContent = characterName;
       newDiv.appendChild(characterNameElement);

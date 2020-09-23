@@ -10,18 +10,19 @@
       <script defer src="app.js"></script>
    </head>
    <body>
-      <header class="header-container">
-         <div class="header-wrapper">
+      <!-- TOP BANNER SECTION -->
+      <header class="top-banner-container">
+         <div class="top-banner-wrapper">
             <h1>Marvel</h1>
             <h5>API Extravaganza</h5>
          </div>
       </header>
 
       <main>
-         <!-- INTRO SECTION -->
-         <div class="intro-container">
-            <div class="intro-text">
-               <h1 class="intro-text-h1">Because... Why Not?!</h1>
+         <!-- SECTION 1: INTRO -->
+         <div class="section-1-container">
+            <div class="section-1-text-wrapper">
+               <h1>Because... Why Not?!</h1>
                <h5>
                   A web developer needs to build personal projects just like an influencer needs to take selfies. So get
                   ready for the developer's version of a duckface! In order to try out javascript syntax in combination
@@ -31,45 +32,42 @@
             </div>
          </div>
 
-         <!-- FAVORITE CHARACTER -->
-         <div class="favorite-char-container">
-            <h1 class="favorite-char-title">Random Favourite Character</h1>
-            <div class="favorite-char-wrapper">
-               <div class="favorite-char-image"></div>
-               <div class="favorite-char-text">
-                  <div class="favorite-char-name"></div>
-                  <div class="favorite-char-description"></div>
-                  <div class="favorite-char-button"></div>
+         <!-- SECTION 2: RANDOM FAVORITE CHARACTER -->
+         <div class="section-2-container">
+            <h1 class="section-2-title">Random Favourite Character</h1>
+            <div class="section-2-wrapper">
+               <div class="section-2-image"></div>
+               <div class="section-2-text-wrapper">
+                  <div class="section-2-char-name"></div>
+                  <div class="section-2-char-description"></div>
                </div>
             </div>
-            <div class="favorite-char-comic-appearances">
-               <h2 class="favorite-char-comic-appearances-title">Recent Comic Book Appearances</h2>
-               <div class="favorite-char-comic-container"></div>
+            <div class="section-2-comic-container">
+               <h2>Recent Comic Book Appearances</h2>
+               <div class="section-2-comic-wrapper"></div>
             </div>
          </div>
 
-         <!-- SERIES CHARACTERS -->
-         <div>
-            <div class="favorite-char-header">
-               <div class="favorite-char-intro">
-                  <h1 class="favorite-char-title">Series Characters</h1>
-                  <h5>
-                     Marvel movies are based on comic books, but they often differ in many ways. One of those
-                     differences is the characters that feature in the movies and comic books respectively. Click the
-                     buttons below to view the characters featuring in the comic books for each of the epic movies.
-                  </h5>
-               </div>
-               <div class="button-bar">
-                  <button onclick="handleClick('Infinity Gauntlet')">Infinity Gauntlet</button>
-                  <button onclick="handleClick('Age of Ultron')">Age of Ultron</button>
-                  <button onclick="handleClick('Civil War')">Civil War</button>
-               </div>
+         <!-- SECTION 3: SERIES CHARACTERS -->
+         <div class="section-3-header">
+            <div class="section-3-wrapper">
+               <h1>Series Characters</h1>
+               <h5>
+                  Marvel movies are based on comic books, but they often differ in many ways. One of those differences
+                  is the characters that feature in the movies and comic books respectively. Click the buttons below to
+                  view the characters featuring in the comic books for each of the epic movies.
+               </h5>
             </div>
-            <div class="series-container">
-               <h1 class="series-header"></h1>
-               <div id="spinner"></div>
-               <div class="character-container"></div>
+            <div class="section-3-button-bar">
+               <button onclick="handleClick('Infinity Gauntlet')">Infinity Gauntlet</button>
+               <button onclick="handleClick('Age of Ultron')">Age of Ultron</button>
+               <button onclick="handleClick('Civil War')">Civil War</button>
             </div>
+         </div>
+         <div class="section-3-char-container">
+            <h1 class="section-3-char-header"></h1>
+            <div id="spinner"></div>
+            <div class="section-3-char-wrapper"></div>
          </div>
       </main>
       <footer>
