@@ -1,5 +1,9 @@
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // IMAGE VARIANTS: https://developer.marvel.com/documentation/images
+/* 
+The Marvel API database has set specific paths for character/comic book images.
+The variables below contain the part of the path that determines the image width and height. 
+*/
 
 const imgRatioPortrait75h = "portrait_small"; // 50x75px
 const imgRatioPortrait150h = "portrait_medium"; // 100x150px

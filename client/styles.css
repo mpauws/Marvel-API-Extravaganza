@@ -157,7 +157,7 @@ button:focus {
    max-width: 800px;
    margin: 0 auto;
    padding: 30px;
-   background-color: rgb(182, 22, 44);
+   background-color: rgb(182, 22, 44, 0.9);
 }
 
 /* ------------------------------------ */
@@ -173,6 +173,7 @@ button:focus {
 
 .button-bar button {
    margin: 10px;
+   background-color: rgb(182, 22, 44, 0.9);
 }
 
 .series-header {
@@ -206,7 +207,7 @@ h1.favorite-char-title {
    display: flex;
    flex-direction: column;
    justify-content: center;
-   padding-left: 10px;
+   padding-left: 15px;
 }
 
 .favority-char-name h2 {
@@ -236,7 +237,7 @@ h1.favorite-char-title {
 }
 
 .favorite-char-comic-item {
-   margin: 15px;
+   margin: 30px;
    width: 216px;
 }
 
@@ -363,4 +364,7 @@ footer {
    .character-container {
       justify-content: center;
    }
+}
+.test-test-test {
+   width: 300px;
 }
