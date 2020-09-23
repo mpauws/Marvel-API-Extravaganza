@@ -10,67 +10,67 @@
 /* ------------------------------------ */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
 
 body {
-  background-color: #141414;
-  min-height: 100vh;
-  color: white;
-  font-family: "Marvel", sans-serif;
-  position: relative;
+   background-color: #0e0e0e;
+   min-height: 100vh;
+   color: white;
+   font-family: "Marvel", sans-serif;
+   position: relative;
 }
 
 h1 {
-  font-size: 3rem;
+   font-size: 3rem;
 }
 
 h2 {
-  font-size: 2rem;
+   font-size: 2rem;
 }
 
 h4 {
-  font-size: 1.3rem;
+   font-size: 1.3rem;
 }
 
 h5 {
-  font-size: 1.2rem;
+   font-size: 1.2rem;
 }
 
 h6 {
-  font-size: 1.4rem;
+   font-size: 1.4rem;
 }
 
 a {
-  color: white;
-  text-decoration: none;
+   color: white;
+   text-decoration: none;
 }
 
 a:visited {
-  color: white;
+   color: white;
 }
 
 button {
-  margin: 10px auto;
-  width: 200px;
-  height: 50px;
-  border: none;
-  background-color: #b6162c;
-  color: white;
-  font-family: "Marvel", sans-serif;
-  font-size: 1.3rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+   margin: 10px auto;
+   width: 200px;
+   height: 50px;
+   border: none;
+   background-color: #b6162c;
+   color: white;
+   font-family: "Marvel", sans-serif;
+   font-size: 1.3rem;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #852a2a;
+   background-color: #852a2a;
 }
 
 button:focus {
-  outline: none;
+   outline: none;
 }
 
 /* ------------------------------------ */
@@ -78,32 +78,32 @@ button:focus {
 /* ------------------------------------ */
 
 .header-container {
-  text-align: center;
+   text-align: center;
 }
 
 .header-wrapper {
-  display: inline-block;
-  margin: 30px auto;
-  border: white 1px solid;
-  padding: 5px;
-  background-color: #b6162c;
+   display: inline-block;
+   margin: 30px auto;
+   border: white 1px solid;
+   padding: 5px;
+   background-color: #b6162c;
 }
 
 .header-wrapper h1 {
-  font-family: "Bebas Neue", cursive;
-  text-transform: uppercase;
-  font-size: 7rem;
-  line-height: 6.5rem;
-  letter-spacing: -0.13rem;
+   font-family: "Bebas Neue", cursive;
+   text-transform: uppercase;
+   font-size: 7rem;
+   line-height: 6.5rem;
+   letter-spacing: -0.13rem;
 }
 
 .header-wrapper h5 {
-  text-transform: uppercase;
-  letter-spacing: 0.4rem;
-  font-size: 1rem;
-  border-top: white 1px solid;
-  border-bottom: white 1px solid;
-  margin-bottom: 5px;
+   text-transform: uppercase;
+   letter-spacing: 0.4rem;
+   font-size: 1rem;
+   border-top: white 1px solid;
+   border-bottom: white 1px solid;
+   margin-bottom: 5px;
 }
 
 /* ------------------------------------ */
@@ -111,25 +111,26 @@ button:focus {
 /* ------------------------------------ */
 
 .intro-container {
-  height: 300px;
-  display: flex;
-  align-items: center;
-  background-image: url("https://i.annihil.us/u/prod/marvel/i/mg/6/10/5931db3f3b307/clean.jpg");
-  background-repeat: no-repeat;
-  background-position: 70% 82%;
+   height: 400px;
+   display: flex;
+   align-items: center;
+   background-image: url("https://i.annihil.us/u/prod/marvel/i/mg/6/10/5931db3f3b307/clean.jpg");
+   background-repeat: no-repeat;
+   background-size: 100vw;
+   background-position: 70% 82%;
 }
 
 .intro-text {
-  width: 60%;
-  min-width: 500px;
-  max-width: 800px;
-  margin-left: 20px;
-  padding: 30px;
-  background-color: rgb(182, 22, 44, 0.8);
+   width: 60%;
+   min-width: 500px;
+   max-width: 800px;
+   margin-left: 20px;
+   padding: 30px;
+   background-color: rgb(182, 22, 44, 0.8);
 }
 
 .intro-text-h1 {
-  opacity: 100%;
+   opacity: 100%;
 }
 
 /* ------------------------------------ */
@@ -137,25 +138,26 @@ button:focus {
 /* ------------------------------------ */
 
 .favorite-char-header {
-  background-image: url("http://i.annihil.us/u/prod/marvel/i/mg/b/d0/5ddc1316a1e5e/clean.jpg");
-  background-repeat: no-repeat;
-  background-position: 50% 60%;
-  margin: 0 auto;
-  text-align: center;
-  padding: 30px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+   background-image: url("http://i.annihil.us/u/prod/marvel/i/mg/b/d0/5ddc1316a1e5e/clean.jpg");
+   background-repeat: no-repeat;
+   background-position: 50% 60%;
+   background-size: 100vw;
+   margin: 0 auto;
+   text-align: center;
+   padding: 30px;
+   height: 450px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
 
 .favorite-char-intro {
-  width: 60%;
-  min-width: 500px;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: rgb(182, 22, 44);
+   width: 60%;
+   min-width: 500px;
+   max-width: 800px;
+   margin: 0 auto;
+   padding: 30px;
+   background-color: rgb(182, 22, 44);
 }
 
 /* ------------------------------------ */
@@ -163,53 +165,56 @@ button:focus {
 /* ------------------------------------ */
 
 .button-bar {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 900px;
-  margin: 0 auto;
+   display: flex;
+   flex-wrap: wrap;
+   max-width: 900px;
+   margin: 0 auto;
 }
 
 .button-bar button {
-  margin: 10px;
+   margin: 10px;
 }
 
 .series-header {
-  padding: 30px;
+   padding: 30px;
 }
 
 .favorite-char-container {
-  padding: 40px 40px 70px 40px;
+   background-image: url("./images/background-1.jpg");
+   background-position: 0% 10%;
+   background-size: 100vw;
+   padding: 80px;
 }
 
 h1.favorite-char-title {
-  text-align: center;
-  padding: 20px;
-  padding-top: 0;
+   text-align: center;
+   padding: 20px;
+   padding-top: 0;
 }
 
 .favorite-char-wrapper {
-  display: flex;
-  justify-content: center;
+   display: flex;
+   justify-content: center;
 }
 
 .favorite-char-image img {
-  margin-right: 10px;
+   margin-right: 10px;
 }
 
 .favorite-char-text {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 10px;
+   width: 500px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding-left: 10px;
 }
 
 .favority-char-name h2 {
-  font-size: 2em;
+   font-size: 2em;
 }
 
 .favorite-char-freq {
-  color: grey;
+   color: grey;
 }
 
 /* ------------------------------------ */
@@ -217,68 +222,91 @@ h1.favorite-char-title {
 /* ------------------------------------ */
 
 .favorite-char-comic-appearances {
-  display: none;
-  width: 900px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 30px;
+   display: none;
+   width: 900px;
+   margin: 0 auto;
+   text-align: center;
+   padding: 30px;
 }
 
 .favorite-char-comic-container {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+   display: flex;
+   justify-content: center;
+   padding: 20px;
 }
 
 .favorite-char-comic-item {
-  margin: 10px;
-  width: 216px;
+   margin: 15px;
+   width: 216px;
+}
+
+.favorite-char-comic-item h6 {
+   padding-top: 10px;
+}
+
+.favorite-char-comic-item img {
+   transition: 0.2s ease-in;
+}
+
+.favorite-char-comic-item img:hover {
+   transform: scale(1.05);
+   -ms-transform: scale(1.05);
+   -moz-transform: scale(1.05);
+   -webkit-transform: scale(1.05);
+   -o-transform: scale(1.05);
 }
 
 /* ------------------------------------ */
 /* SERIES CHARACTER STYLING */
 /* ------------------------------------ */
 
-.character-container {
-  width: 90%;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding-bottom: 100px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
+.series-container {
+   background-image: url("./images/background-2.jpg");
+   background-repeat: no-repeat;
+   background-size: 100vw;
 }
 
-h2.series-header {
-  text-align: center;
+.character-container {
+   width: 90%;
+   max-width: 1300px;
+   margin: 0 auto;
+   padding-bottom: 100px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   position: relative;
+}
+
+h1.series-header {
+   padding: 60px 0;
+   text-align: center;
 }
 
 .character-item {
-  margin-bottom: 20px;
-  animation: fadeInAnimation ease 0.3s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  padding: 10px;
+   margin-bottom: 20px;
+   animation: fadeInAnimation ease 0.3s;
+   animation-iteration-count: 1;
+   animation-fill-mode: forwards;
+   padding: 10px;
 }
 
 .image-container {
-  width: 250px;
-  height: 250px;
-  display: inline-block;
-  overflow: hidden;
+   width: 250px;
+   height: 250px;
+   display: inline-block;
+   overflow: hidden;
 }
 
 .image-container img {
-  transition: 0.2s ease-in;
+   transition: 0.2s ease-in;
 }
 
 .image-container img:hover {
-  transform: scale(1.05);
-  -ms-transform: scale(1.05);
-  -moz-transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  -o-transform: scale(1.05);
+   transform: scale(1.05);
+   -ms-transform: scale(1.05);
+   -moz-transform: scale(1.05);
+   -webkit-transform: scale(1.05);
+   -o-transform: scale(1.05);
 }
 
 /* ------------------------------------ */
@@ -286,35 +314,35 @@ h2.series-header {
 /* ------------------------------------ */
 
 #spinner {
-  display: none;
-  width: 50px;
-  height: 50px;
+   display: none;
+   width: 50px;
+   height: 50px;
 
-  border: 2px solid #f3f3f3;
-  border-top: 3px solid #b6162c;
-  border-radius: 100%;
+   border: 2px solid #f3f3f3;
+   border-top: 3px solid #b6162c;
+   border-radius: 100%;
 
-  margin: auto;
+   margin: auto;
 
-  animation: spin 1s infinite linear;
+   animation: spin 1s infinite linear;
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+   from {
+      transform: rotate(0deg);
+   }
+   to {
+      transform: rotate(360deg);
+   }
 }
 
 @keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
 }
 
 /* ------------------------------------ */
@@ -322,17 +350,17 @@ h2.series-header {
 /* ------------------------------------ */
 
 footer {
-  text-align: center;
-  margin: 0 auto;
-  display: inline-block;
-  width: 100%;
-  margin: 30px auto;
-  position: absolute;
-  bottom: 0;
+   text-align: center;
+   margin: 0 auto;
+   display: inline-block;
+   width: 100%;
+   margin: 30px auto;
+   position: absolute;
+   bottom: 0;
 }
 
 @media only screen and (max-width: 915px) {
-  .character-container {
-    justify-content: center;
-  }
+   .character-container {
+      justify-content: center;
+   }
 }
