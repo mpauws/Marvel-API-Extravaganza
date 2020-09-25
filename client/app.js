@@ -38,28 +38,28 @@ const characterContainer = document.querySelector(".section-3-char-wrapper");
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 const spinnerVisible = () => {
-  spinner.style.display = "block";
-  setTimeout(() => {
-    spinner.style.display = "none";
-  }, 5000);
+   spinner.style.display = "block";
+   setTimeout(() => {
+      spinner.style.display = "none";
+   }, 5000);
 };
 
 const spinnerHidden = () => {
-  spinner.style.display = "none";
+   spinner.style.display = "none";
 };
 
 // TO DO: localStorage!!!
 // TO DO: Use event.target to fire off getCharacters
 
 const handleClick = (series) => {
-  seriesNameElement.textContent = `Characters of ${series}`;
-  if (series === "Infinity Gauntlet") {
-    getCharacters(charactersInfinity).then(addCharactersToPage);
-  } else if (series === "Age of Ultron") {
-    getCharacters(charactersAgeUltron).then(addCharactersToPage);
-  } else if (series === "Civil War") {
-    getCharacters(charactersCivilWar).then(addCharactersToPage);
-  }
+   seriesNameElement.textContent = `Characters of ${series}`;
+   if (series === "Infinity Gauntlet") {
+      getCharacters(charactersInfinity).then(addCharactersToPage);
+   } else if (series === "Age of Ultron") {
+      getCharacters(charactersAgeUltron).then(addCharactersToPage);
+   } else if (series === "Civil War") {
+      getCharacters(charactersCivilWar).then(addCharactersToPage);
+   }
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -67,13 +67,13 @@ const handleClick = (series) => {
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 const getCharacters = (seriesURL) => {
-  spinnerVisible();
-  return fetch(seriesURL)
-    .then((response) => response.json())
-    .then((data) => {
-      spinnerHidden();
-      return data;
-    });
+   spinnerVisible();
+   return fetch(seriesURL)
+      .then((response) => response.json())
+      .then((data) => {
+         spinnerHidden();
+         return data;
+      });
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -123,7 +123,16 @@ const addComicsToHiddenDiv = (characterData) => {
 
    if (characterData.data.results.length === 0) {
       console.log("oeps");
-      // ENTER: HULK SMASH!!!
+      const newDiv = document.createElement("div");
+      const newImg = document.createElement("img");
+      const newComicTitle = document.createElement("h6");
+      comicBookContainer.appendChild(newDiv);
+      newDiv.appendChild(newImg);
+      newImg.src = "./images/hulk-smash.jpg";
+      newImg.classList = "favorite-char-comic-error";
+      newComicTitle.textContent =
+         "Oh dear... unfortunately the Marvil Comics API doesn't seem to contain any comic books with this character";
+      newDiv.appendChild(newComicTitle);
    } else {
       characterData.data.results.forEach((comic) => {
          const newDiv = document.createElement("div");
