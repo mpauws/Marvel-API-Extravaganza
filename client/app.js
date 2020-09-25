@@ -9,8 +9,9 @@ const BASE_URL = "https://gateway.marvel.com:443/v1/public/";
 // FAVORITE CHARACTER URL
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
-const randomArrayIndex = Math.floor(Math.random() * favoriteCharacterIDs.length - 1);
-const favoriteChar = `${BASE_URL}characters/${favoriteCharacterIDs[randomArrayIndex]}?${API_KEY}`;
+// randomIndex is used to access a random object in the favCharIDs array (in a separate file)
+const randomIndex = Math.floor(Math.random() * favCharIDs.length - 1);
+const favChar = `${BASE_URL}characters/${favCharIDs[randomIndex]}?${API_KEY}`;
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // SERIES CHARACTER URLs
@@ -25,9 +26,9 @@ const charactersCivilWar = `${BASE_URL}events/238/characters?orderBy=name&limit=
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 const spinner = document.getElementById("spinner");
-const favoriteCharImg = document.querySelector(".section-2-image");
-const favoriteCharNameDiv = document.querySelector(".section-2-char-name");
-const favoriteCharDescrDiv = document.querySelector(".section-2-char-description");
+const favCharImg = document.querySelector(".section-2-image");
+const favCharNameDiv = document.querySelector(".section-2-char-name");
+const favCharDescrDiv = document.querySelector(".section-2-char-description");
 const comicBookApp = document.querySelector(".section-2-comic-container");
 const comicBookContainer = document.querySelector(".section-2-comic-wrapper");
 const seriesNameElement = document.querySelector(".section-3-char-header");
@@ -38,28 +39,28 @@ const characterContainer = document.querySelector(".section-3-char-wrapper");
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 const spinnerVisible = () => {
-   spinner.style.display = "block";
-   setTimeout(() => {
-      spinner.style.display = "none";
-   }, 5000);
+  spinner.style.display = "block";
+  setTimeout(() => {
+    spinner.style.display = "none";
+  }, 5000);
 };
 
 const spinnerHidden = () => {
-   spinner.style.display = "none";
+  spinner.style.display = "none";
 };
 
 // TO DO: localStorage!!!
 // TO DO: Use event.target to fire off getCharacters
 
 const handleClick = (series) => {
-   seriesNameElement.textContent = `Characters of ${series}`;
-   if (series === "Infinity Gauntlet") {
-      getCharacters(charactersInfinity).then(addCharactersToPage);
-   } else if (series === "Age of Ultron") {
-      getCharacters(charactersAgeUltron).then(addCharactersToPage);
-   } else if (series === "Civil War") {
-      getCharacters(charactersCivilWar).then(addCharactersToPage);
-   }
+  seriesNameElement.textContent = `Characters of ${series}`;
+  if (series === "Infinity Gauntlet") {
+    getCharacters(charactersInfinity).then(addCharactersToPage);
+  } else if (series === "Age of Ultron") {
+    getCharacters(charactersAgeUltron).then(addCharactersToPage);
+  } else if (series === "Civil War") {
+    getCharacters(charactersCivilWar).then(addCharactersToPage);
+  }
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -67,51 +68,51 @@ const handleClick = (series) => {
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 const getCharacters = (seriesURL) => {
-   spinnerVisible();
-   return fetch(seriesURL)
-      .then((response) => response.json())
-      .then((data) => {
-         spinnerHidden();
-         return data;
-      });
+  spinnerVisible();
+  return fetch(seriesURL)
+    .then((response) => response.json())
+    .then((data) => {
+      spinnerHidden();
+      return data;
+    });
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // ADD RANDOM FAVOURITE CHARACTER TO DOM
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
-const addFavoriteCharToPage = (characterData) => {
-   const characterDataVar = characterData.data.results;
-   const comicBooksChar = `${BASE_URL}characters/${characterDataVar[0].id}/comics?limit=3&${API_KEY}`;
+const addfavCharToPage = (characterData) => {
+  const charDataVar = characterData.data.results;
+  const comicBooksChar = `${BASE_URL}characters/${charDataVar[0].id}/comics?limit=3&${API_KEY}`;
 
-   characterDataVar.sort(function (a, b) {
-      return b.comics.available - a.comics.available;
-   });
+  charDataVar.sort(function (a, b) {
+    return b.comics.available - a.comics.available;
+  });
 
-   const newImg = document.createElement("img");
-   const favoriteCharName = document.createElement("h2");
-   const newDescrParagraph = document.createElement("p");
-   const newFreqParagraph = document.createElement("p");
-   const comicBookFrequency = `${characterDataVar[0].comics.available}`;
-   const newComicCharButton = document.createElement("button");
+  const newImg = document.createElement("img");
+  const favCharName = document.createElement("h2");
+  const newDescrParagraph = document.createElement("p");
+  const newFreqParagraph = document.createElement("p");
+  const comicBookFreq = `${charDataVar[0].comics.available}`;
+  const charComicsButton = document.createElement("button");
 
-   newImg.src = `${characterDataVar[0].thumbnail.path}/${imgRatioSquare250w}.${characterDataVar[0].thumbnail.extension}`;
-   favoriteCharImg.appendChild(newImg);
-   favoriteCharName.textContent = characterDataVar[0].name.replace(/\(.*\)/, "");
-   favoriteCharNameDiv.appendChild(favoriteCharName);
-   newDescrParagraph.textContent = characterDataVar[0].description;
-   favoriteCharDescrDiv.appendChild(newDescrParagraph);
-   newFreqParagraph.textContent = `(Appeared in ${comicBookFrequency} comics)`;
-   newFreqParagraph.classList = "section-2-char-freq";
+  newImg.src = `${charDataVar[0].thumbnail.path}/${imgRatioSquare250w}.${charDataVar[0].thumbnail.extension}`;
+  favCharImg.appendChild(newImg);
+  favCharName.textContent = charDataVar[0].name.replace(/\(.*\)/, "");
+  favCharNameDiv.appendChild(favCharName);
+  newDescrParagraph.textContent = charDataVar[0].description;
+  favCharDescrDiv.appendChild(newDescrParagraph);
+  newFreqParagraph.textContent = `(Appeared in ${comicBookFreq} comics)`;
+  newFreqParagraph.classList = "section-2-char-freq";
 
-   comicBookFrequency >= 3 && favoriteCharNameDiv.appendChild(newFreqParagraph);
+  comicBookFreq >= 3 && favCharNameDiv.appendChild(newFreqParagraph);
 
-   newComicCharButton.textContent = "Show Recent Comics";
-   favoriteCharDescrDiv.appendChild(newComicCharButton);
+  charComicsButton.textContent = "Show Recent Comics";
+  favCharDescrDiv.appendChild(charComicsButton);
 
-   newComicCharButton.addEventListener("click", () => {
-      getCharacters(comicBooksChar).then(addComicsToHiddenDiv);
-   });
+  charComicsButton.addEventListener("click", () => {
+    getCharacters(comicBooksChar).then(addComicsToHiddenDiv);
+  });
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -119,36 +120,37 @@ const addFavoriteCharToPage = (characterData) => {
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 const addComicsToHiddenDiv = (characterData) => {
-   comicBookContainer.textContent = "";
+  comicBookContainer.textContent = "";
 
-   if (characterData.data.results.length === 0) {
-      console.log("oeps");
+  if (characterData.data.results.length === 0) {
+    console.log("oeps");
+    const newDiv = document.createElement("div");
+    const newImg = document.createElement("img");
+    const newComicTitle = document.createElement("h6");
+
+    comicBookContainer.appendChild(newDiv);
+    newDiv.appendChild(newImg);
+    newImg.src = "./images/hulk-smash.jpg";
+    newImg.classList = "favorite-char-comic-error";
+    newComicTitle.textContent =
+      "Oh dear... unfortunately the Marvil Comics API doesn't seem to contain any comic books with this character";
+    newDiv.appendChild(newComicTitle);
+  } else {
+    characterData.data.results.forEach((comic) => {
       const newDiv = document.createElement("div");
       const newImg = document.createElement("img");
       const newComicTitle = document.createElement("h6");
+
+      newDiv.classList = "section-2-comic-item";
       comicBookContainer.appendChild(newDiv);
       newDiv.appendChild(newImg);
-      newImg.src = "./images/hulk-smash.jpg";
-      newImg.classList = "favorite-char-comic-error";
-      newComicTitle.textContent =
-         "Oh dear... unfortunately the Marvil Comics API doesn't seem to contain any comic books with this character";
+
+      newImg.src = `${comic.thumbnail.path}/${imgRatioPortrait324h}.jpg`;
+      newComicTitle.textContent = `${comic.title}`;
       newDiv.appendChild(newComicTitle);
-   } else {
-      characterData.data.results.forEach((comic) => {
-         const newDiv = document.createElement("div");
-         const newImg = document.createElement("img");
-         const newComicTitle = document.createElement("h6");
-
-         newDiv.classList = "section-2-comic-item";
-         comicBookContainer.appendChild(newDiv);
-         newDiv.appendChild(newImg);
-
-         newImg.src = `${comic.thumbnail.path}/${imgRatioPortrait324h}.jpg`;
-         newComicTitle.textContent = `${comic.title}`;
-         newDiv.appendChild(newComicTitle);
-      });
-   }
-   comicBookApp.style.display = "block";
+    });
+  }
+  comicBookApp.style.display = "block";
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -156,30 +158,29 @@ const addComicsToHiddenDiv = (characterData) => {
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 const addCharactersToPage = (characterData) => {
-   characterContainer.textContent = "";
-   characterData.data.results.sort(function (a, b) {
-      return b.comics.available - a.comics.available;
-   });
+  characterContainer.textContent = "";
+  characterData.data.results.sort(function (a, b) {
+    return b.comics.available - a.comics.available;
+  });
 
-   characterData.data.results.forEach((character) => {
-      const characterImage = `${character.thumbnail.path}/${imgRatioSquare250w}.${character.thumbnail.extension}`;
-      const comicBookFrequency = `${character.comics.available}`;
-      const characterName = character.name.replace(/\(.*\)/, "");
-      const newDiv = document.createElement("div");
-      const characterNameElement = document.createElement("h4");
-      const imgContainer = document.createElement("div");
-      const newImg = document.createElement("img");
-      const newParagraph = document.createElement("p");
+  characterData.data.results.forEach((character) => {
+    const characterImage = `${character.thumbnail.path}/${imgRatioSquare250w}.${character.thumbnail.extension}`;
+    const comicBookFreq = `${character.comics.available}`;
+    const characterName = character.name.replace(/\(.*\)/, "");
+    const newDiv = document.createElement("div");
+    const characterNameElement = document.createElement("h4");
+    const newImg = document.createElement("img");
+    const newParagraph = document.createElement("p");
 
-      characterContainer.appendChild(newDiv);
-      newDiv.appendChild(newImg);
-      newDiv.classList.add("section-3-char-item");
-      newImg.src = characterImage;
-      characterNameElement.textContent = characterName;
-      newDiv.appendChild(characterNameElement);
-      newParagraph.textContent = `Appeared in ${comicBookFrequency} comics`;
-      newDiv.appendChild(newParagraph);
-   });
+    characterContainer.appendChild(newDiv);
+    newDiv.appendChild(newImg);
+    newDiv.classList.add("section-3-char-item");
+    newImg.src = characterImage;
+    characterNameElement.textContent = characterName;
+    newDiv.appendChild(characterNameElement);
+    newParagraph.textContent = `Appeared in ${comicBookFreq} comics`;
+    newDiv.appendChild(newParagraph);
+  });
 };
 
-getCharacters(favoriteChar).then(addFavoriteCharToPage);
+getCharacters(favChar).then(addfavCharToPage);
