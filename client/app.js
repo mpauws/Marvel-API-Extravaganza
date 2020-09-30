@@ -9,9 +9,11 @@ const BASE_URL = "https://gateway.marvel.com:443/v1/public/";
 // FAVORITE CHARACTER URL
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
-let randomArrayIndex = Math.floor(Math.random() * favoriteCharacterIDs.length - 1);
-const favoriteChar = `${BASE_URL}characters/${favoriteCharacterIDs[randomArrayIndex]}?${API_KEY}`;
-const refreshfavoriteChar = `${BASE_URL}characters/${favoriteCharacterIDs[randomArrayIndex + 1]}?${API_KEY}`;
+console.log(favCharIDs);
+
+let randomArrayIndex = Math.floor(Math.random() * favCharIDs.length - 1);
+const favoriteChar = `${BASE_URL}characters/${favCharIDs[randomArrayIndex]}?${API_KEY}`;
+const refreshfavoriteChar = `${BASE_URL}characters/${favCharIDs[randomArrayIndex + 1]}?${API_KEY}`;
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // SERIES CHARACTER URLs
@@ -97,39 +99,35 @@ const addFavoriteCharToPage = (characterData) => {
    const displayCharComicsButton = document.createElement("button");
    const refreshCharButton = document.createElement("button");
 
-   const addToPage = () => {
-      newImg.src = `${characterDataVar[0].thumbnail.path}/${imgRatioSquare250w}.${characterDataVar[0].thumbnail.extension}`;
-      favoriteCharImg.appendChild(newImg);
-      favoriteCharName.textContent = characterDataVar[0].name.replace(/\(.*\)/, "");
-      favoriteCharNameDiv.appendChild(favoriteCharName);
-      newDescrParagraph.textContent = characterDataVar[0].description;
-      favoriteCharDescrDiv.appendChild(newDescrParagraph);
-      newFreqParagraph.textContent = `(Appeared in ${comicBookFrequency} comics)`;
-      newFreqParagraph.classList = "section-2-char-freq";
+   newImg.src = `${characterDataVar[0].thumbnail.path}/${imgRatioSquare250w}.${characterDataVar[0].thumbnail.extension}`;
+   favoriteCharImg.appendChild(newImg);
+   favoriteCharName.textContent = characterDataVar[0].name.replace(/\(.*\)/, "");
+   favoriteCharNameDiv.appendChild(favoriteCharName);
+   newDescrParagraph.textContent = characterDataVar[0].description;
+   favoriteCharDescrDiv.appendChild(newDescrParagraph);
+   newFreqParagraph.textContent = `(Appeared in ${comicBookFrequency} comics)`;
+   newFreqParagraph.classList = "section-2-char-freq";
 
-      comicBookFrequency >= 3 && favoriteCharNameDiv.appendChild(newFreqParagraph);
+   comicBookFrequency >= 3 && favoriteCharNameDiv.appendChild(newFreqParagraph);
 
-      displayCharComicsButton.textContent = "Show Recent Comics";
-      favoriteCharDescrDiv.appendChild(displayCharComicsButton);
+   displayCharComicsButton.textContent = "Show Recent Comics";
+   favoriteCharDescrDiv.appendChild(displayCharComicsButton);
 
-      refreshCharButton.textContent = "Refresh Character";
-      favoriteCharDescrDiv.appendChild(refreshCharButton);
-   };
-
-   addToPage();
+   refreshCharButton.textContent = "Refresh Character";
+   favoriteCharDescrDiv.appendChild(refreshCharButton);
 
    displayCharComicsButton.addEventListener("click", () => {
       getCharacters(comicBooksChar).then(addComicsToHiddenDiv);
    });
 
-   refreshCharButton.addEventListener("click", () => {
+   /*    refreshCharButton.addEventListener("click", () => {
       favoriteCharImg.textContent = "";
       favoriteCharNameDiv.textContent = "";
       favoriteCharDescrDiv.textContent = "";
       favoriteCharDescrDiv.textContent = "";
-      getCharacters(refreshfavoriteChar).then(addToPage);
-      alert("Not functional yet");
-   });
+      getCharacters(refreshfavoriteChar).then(addFavoriteCharToPage);
+      
+   }); */
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
