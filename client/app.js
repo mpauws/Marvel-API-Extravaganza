@@ -9,8 +9,9 @@ const BASE_URL = "https://gateway.marvel.com:443/v1/public/";
 // FAVORITE CHARACTER URL
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
-const randomArrayIndex = Math.floor(Math.random() * favoriteCharacterIDs.length - 1);
+let randomArrayIndex = Math.floor(Math.random() * favoriteCharacterIDs.length - 1);
 const favoriteChar = `${BASE_URL}characters/${favoriteCharacterIDs[randomArrayIndex]}?${API_KEY}`;
+const refreshfavoriteChar = `${BASE_URL}characters/${favoriteCharacterIDs[randomArrayIndex + 1]}?${API_KEY}`;
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 // SERIES CHARACTER URLs
@@ -93,24 +94,41 @@ const addFavoriteCharToPage = (characterData) => {
    const newDescrParagraph = document.createElement("p");
    const newFreqParagraph = document.createElement("p");
    const comicBookFrequency = `${characterDataVar[0].comics.available}`;
-   const newComicCharButton = document.createElement("button");
+   const displayCharComicsButton = document.createElement("button");
+   const refreshCharButton = document.createElement("button");
 
-   newImg.src = `${characterDataVar[0].thumbnail.path}/${imgRatioSquare250w}.${characterDataVar[0].thumbnail.extension}`;
-   favoriteCharImg.appendChild(newImg);
-   favoriteCharName.textContent = characterDataVar[0].name.replace(/\(.*\)/, "");
-   favoriteCharNameDiv.appendChild(favoriteCharName);
-   newDescrParagraph.textContent = characterDataVar[0].description;
-   favoriteCharDescrDiv.appendChild(newDescrParagraph);
-   newFreqParagraph.textContent = `(Appeared in ${comicBookFrequency} comics)`;
-   newFreqParagraph.classList = "section-2-char-freq";
+   const addToPage = () => {
+      newImg.src = `${characterDataVar[0].thumbnail.path}/${imgRatioSquare250w}.${characterDataVar[0].thumbnail.extension}`;
+      favoriteCharImg.appendChild(newImg);
+      favoriteCharName.textContent = characterDataVar[0].name.replace(/\(.*\)/, "");
+      favoriteCharNameDiv.appendChild(favoriteCharName);
+      newDescrParagraph.textContent = characterDataVar[0].description;
+      favoriteCharDescrDiv.appendChild(newDescrParagraph);
+      newFreqParagraph.textContent = `(Appeared in ${comicBookFrequency} comics)`;
+      newFreqParagraph.classList = "section-2-char-freq";
 
-   comicBookFrequency >= 3 && favoriteCharNameDiv.appendChild(newFreqParagraph);
+      comicBookFrequency >= 3 && favoriteCharNameDiv.appendChild(newFreqParagraph);
 
-   newComicCharButton.textContent = "Show Recent Comics";
-   favoriteCharDescrDiv.appendChild(newComicCharButton);
+      displayCharComicsButton.textContent = "Show Recent Comics";
+      favoriteCharDescrDiv.appendChild(displayCharComicsButton);
 
-   newComicCharButton.addEventListener("click", () => {
+      refreshCharButton.textContent = "Refresh Character";
+      favoriteCharDescrDiv.appendChild(refreshCharButton);
+   };
+
+   addToPage();
+
+   displayCharComicsButton.addEventListener("click", () => {
       getCharacters(comicBooksChar).then(addComicsToHiddenDiv);
+   });
+
+   refreshCharButton.addEventListener("click", () => {
+      favoriteCharImg.textContent = "";
+      favoriteCharNameDiv.textContent = "";
+      favoriteCharDescrDiv.textContent = "";
+      favoriteCharDescrDiv.textContent = "";
+      getCharacters(refreshfavoriteChar).then(addToPage);
+      alert("Not functional yet");
    });
 };
 
@@ -133,6 +151,7 @@ const addComicsToHiddenDiv = (characterData) => {
       newComicTitle.textContent =
          "Oh dear... unfortunately the Marvil Comics API doesn't seem to contain any comic books with this character";
       newDiv.appendChild(newComicTitle);
+      // Add refresh button to load new character
    } else {
       characterData.data.results.forEach((comic) => {
          const newDiv = document.createElement("div");
@@ -167,7 +186,6 @@ const addCharactersToPage = (characterData) => {
       const characterName = character.name.replace(/\(.*\)/, "");
       const newDiv = document.createElement("div");
       const characterNameElement = document.createElement("h4");
-      const imgContainer = document.createElement("div");
       const newImg = document.createElement("img");
       const newParagraph = document.createElement("p");
 
