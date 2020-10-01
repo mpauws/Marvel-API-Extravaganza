@@ -9,8 +9,6 @@ const BASE_URL = "https://gateway.marvel.com:443/v1/public/";
 // FAVORITE CHARACTER URL
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
-console.log(favCharIDs);
-
 let randomArrayIndex = Math.floor(Math.random() * favCharIDs.length - 1);
 const favoriteChar = `${BASE_URL}characters/${favCharIDs[randomArrayIndex]}?${API_KEY}`;
 const refreshfavoriteChar = `${BASE_URL}characters/${favCharIDs[randomArrayIndex + 1]}?${API_KEY}`;
@@ -97,7 +95,6 @@ const addFavoriteCharToPage = (characterData) => {
    const newFreqParagraph = document.createElement("p");
    const comicBookFrequency = `${characterDataVar[0].comics.available}`;
    const displayCharComicsButton = document.createElement("button");
-   const refreshCharButton = document.createElement("button");
 
    newImg.src = `${characterDataVar[0].thumbnail.path}/${imgRatioSquare250w}.${characterDataVar[0].thumbnail.extension}`;
    favoriteCharImg.appendChild(newImg);
@@ -113,21 +110,9 @@ const addFavoriteCharToPage = (characterData) => {
    displayCharComicsButton.textContent = "Show Recent Comics";
    favoriteCharDescrDiv.appendChild(displayCharComicsButton);
 
-   refreshCharButton.textContent = "Refresh Character";
-   favoriteCharDescrDiv.appendChild(refreshCharButton);
-
    displayCharComicsButton.addEventListener("click", () => {
       getCharacters(comicBooksChar).then(addComicsToHiddenDiv);
    });
-
-   /*    refreshCharButton.addEventListener("click", () => {
-      favoriteCharImg.textContent = "";
-      favoriteCharNameDiv.textContent = "";
-      favoriteCharDescrDiv.textContent = "";
-      favoriteCharDescrDiv.textContent = "";
-      getCharacters(refreshfavoriteChar).then(addFavoriteCharToPage);
-      
-   }); */
 };
 
 // [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -142,6 +127,8 @@ const addComicsToHiddenDiv = (characterData) => {
       const newDiv = document.createElement("div");
       const newImg = document.createElement("img");
       const newComicTitle = document.createElement("h6");
+      const refreshCharButton = document.createElement("button");
+
       comicBookContainer.appendChild(newDiv);
       newDiv.appendChild(newImg);
       newImg.src = "./images/hulk-smash.jpg";
@@ -149,7 +136,18 @@ const addComicsToHiddenDiv = (characterData) => {
       newComicTitle.textContent =
          "Oh dear... unfortunately the Marvil Comics API doesn't seem to contain any comic books with this character";
       newDiv.appendChild(newComicTitle);
-      // Add refresh button to load new character
+      
+      refreshCharButton.textContent = "Refresh Character";
+      newDiv.appendChild(refreshCharButton);
+
+      refreshCharButton.addEventListener("click", () => {
+         favoriteCharImg.textContent = "";
+         favoriteCharNameDiv.textContent = "";
+         favoriteCharDescrDiv.textContent = "";
+         favoriteCharDescrDiv.textContent = "";
+         getCharacters(refreshfavoriteChar).then(addFavoriteCharToPage);
+         getCharacters(comicBooksChar).then(addComicsToHiddenDiv);
+      });
    } else {
       characterData.data.results.forEach((comic) => {
          const newDiv = document.createElement("div");
